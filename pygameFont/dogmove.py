@@ -6,44 +6,15 @@ import os, sys, time, pygame
 from pygame.locals import *
 from pygame.font import *
 
-def show_text(surface_handle, pos, text, color, font_bold = False, font_size = 13, font_italic = False):
-    '''
-    文字处理函数
-    input:
-        surface_handle:surface句柄
-        pox:文字显示位置
-        color:文字颜色
-        font_bold:是否加粗
-        font_size:字体大小
-        font_italic:是否斜体
-    oupput:
-        none
-    author:
-        zps
-    '''
-    # 获取系统字体，并设置文字大小
-    cur_font = pygame.font.SysFont("宋体", font_size)
-
-    # 设置是否加粗
-    cur_font.set_bold(font_bold)
-
-    # 设置是否斜体
-    cur_font.set_italic(font_italic)
-
-    #设置文字内容
-    text_fmt = cur_font.render(text,1,color)
-
-    # 绘制文字
-    surface_handle.blit(text_fmt, pos)
-
 pygame.init()
 screen = pygame.display.set_mode((600,400))
 pygame.display.set_caption("显示文字")
-# 填充白色
-#screen.fill((255.255.255))
+# 填充红色
+screen.fill((255,0,0))
 
-timer = 10
-show_text(screen, (250,150),str(timer) ,(255,255,255),font_size = 221)
+timer = 10 
+cur_font = pygame.font.SysFont("宋体",200)  # 设置字体及大小
+    
 pygame.display.update()
 # main loop
 while True:
@@ -56,38 +27,13 @@ while True:
         timer -= 1
         time.sleep(1)
     screen.fill([0,0,0])
-    show_text(screen, (250,150),str(timer) ,(255,255,255),font_size = 221)
+    #show_text(screen, (250,150),str(timer) ,(255,255,255),font_size = 221)
+    text = cur_font.render(str(timer),1,[255,255,255])  # 内容，，颜色
+    screen.fill((255,0,0))  # 填充红色
+    screen.blit(text, (20,20)) # 
+    if timer == 0:
+        pygame.mixer.music.load("dog.wav")
+        pygame.mixer.music.play(1) 
+        timer = 10
     # 刷新
     pygame.display.update()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
