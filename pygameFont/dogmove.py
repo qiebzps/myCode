@@ -42,19 +42,21 @@ pygame.display.set_caption("显示文字")
 # 填充白色
 #screen.fill((255.255.255))
 
-timer = 20
+timer = 10
+show_text(screen, (250,150),str(timer) ,(255,255,255),font_size = 221)
+pygame.display.update()
 # main loop
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:
-            pygame.quit
-            sys.exit
+            pygame.quit()
+            sys.exit()
     
     if (timer>0):
         timer -= 1
         time.sleep(1)
     screen.fill([0,0,0])
-    show_text(screen, (10,10),str(timer) ,(255,255,255),font_size = 21)
+    show_text(screen, (250,150),str(timer) ,(255,255,255),font_size = 221)
     # 刷新
     pygame.display.update()
 
